@@ -1,0 +1,621 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscription - LAZONA</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --background-color: #f9f9f9;
+        --text-color: #333;
+        --accent-color: #e74c3c;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0.5rem 2% 0.5rem 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-size: 2.8rem;
+        transition: all 0.3s ease;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-right: 2rem;
+        margin-left: -10rem;
+    }
+    
+    .logo:hover {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    
+    nav.main-nav {
+        flex-grow: 1;
+        margin-left: 2rem;
+    }
+
+    nav.main-nav ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    
+    nav.main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav.main-nav ul li a.nav-button {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    nav.main-nav ul li a.nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector {
+        margin-right: 20px;
+    }
+
+    #language-select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        background-color: transparent;
+        color: #fff;
+    }
+
+    #language-select option {
+        background-color: var(--primary-color);
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 10px;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .btn-secondary:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 8rem auto 2rem;
+        padding: 2rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
+    h1 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .registration-form {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+    
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+
+    .phone-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .phone-input-group {
+        display: flex;
+        align-items: center;
+    }
+
+    #country-code {
+        width: 120px;
+        margin-right: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    #country-code:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+
+    #phone {
+        flex-grow: 1;
+    }
+    
+    .password-strength {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .password-strength-meter {
+        height: 5px;
+        background-color: #ddd;
+        margin-top: 0.5rem;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .password-strength-meter div {
+        height: 100%;
+        width: 0;
+        transition: width 0.3s ease;
+    }
+    
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    
+    .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .submit-btn:hover {
+        background-color: #2980b9;
+    }
+    
+    .login-link {
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .login-link a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logo {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        
+        nav.main-nav {
+            order: 3;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        nav.main-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav.main-nav ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .auth-buttons {
+            margin-top: 1rem;
+        }
+        
+        .container {
+            width: 95%;
+            padding: 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LAZONA</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Inscription</h1>
+        <form class="registration-form">
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group phone-group">
+                <label for="phone">Numéro de téléphone</label>
+                <div class="phone-input-group">
+                    <select id="country-code" name="country-code">
+                        <option value="+1">+1 (USA/Canada)</option>
+                        <option value="+33">+33 (France)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+49">+49 (Germany)</option>
+                        <option value="+34">+34 (Spain)</option>
+                        <option value="+39">+39 (Italy)</option>
+                        <option value="+31">+31 (Netherlands)</option>
+                        <option value="+32">+32 (Belgium)</option>
+                        <option value="+41">+41 (Switzerland)</option>
+                        <option value="+351">+351 (Portugal)</option>
+                        <option value="+30">+30 (Greece)</option>
+                        <option value="+46">+46 (Sweden)</option>
+                        <option value="+47">+47 (Norway)</option>
+                        <option value="+45">+45 (Denmark)</option>
+                        <option value="+358">+358 (Finland)</option>
+                        <option value="+43">+43 (Austria)</option>
+                        <option value="+48">+48 (Poland)</option>
+                        <option value="+380">+380 (Ukraine)</option>
+                        <option value="+7">+7 (Russia)</option>
+                        <option value="+52">+52 (Mexico)</option>
+                        <option value="+55">+55 (Brazil)</option>
+                        <option value="+54">+54 (Argentina)</option>
+                        <option value="+57">+57 (Colombie)</option>
+                        <option value="+56">+56 (Chili)</option>
+                        <option value="+51">+51 (Pérou)</option>
+                        <option value="+58">+58 (Venezuela)</option>
+                        <option value="+1787">+1787 (Puerto Rico)</option>
+                        <option value="+691">+691 (Micronésie)</option>
+                        <option value="+692">+692 (Îles Marshall)</option>
+                        <option value="+680">+680 (Palau)</option>
+                        <option value="+507">+507 (Panama)</option>
+                        <option value="+503">+503 (El Salvador)</option>
+                        <option value="+670">+670 (Timor oriental)</option>
+                        <option value="+1649">+1649 (Îles Turks et Caïques)</option>
+                        <option value="+1284">+1284 (Îles Vierges britanniques)</option>
+                        <option value="+599">+599 (Pays-Bas caribéens)</option>
+                        <option value="+593">+593 (Ecuador)</option>
+                    </select>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-strength">Force du mot de passe : <span id="password-strength-text">Faible</span></div>
+                <div class="password-strength-meter">
+                    <div id="password-strength-meter-bar"></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirmer le mot de passe</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div class="form-group">
+                <label for="account-type">Type de compte</label>
+                <select id="account-type" name="account-type" required>
+                    <option value="">Sélectionnez un type de compte</option>
+                    <option value="emprunteur">Emprunteur</option>
+                    <option value="investisseur">Investisseur</option>
+                </select>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">J'accepte les <a href="/conditions-utilisation">conditions d'utilisation</a> et la <a href="/politique-confidentialite">politique de confidentialité</a></label>
+            </div>
+            <button type="submit" class="submit-btn">S'inscrire</button>
+        </form>
+        <div class="login-link">
+            <p>Déjà inscrit ? <a href="connexion.html">Connectez-vous ici</a></p>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const languageSelect = document.getElementById('language-select');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const passwordStrengthText = document.getElementById('password-strength-text');
+    const passwordStrengthMeterBar = document.getElementById('password-strength-meter-bar');
+    const form = document.querySelector('.registration-form');
+    const countryCodeSelect = document.getElementById('country-code');
+    const phoneInput = document.getElementById('phone');
+    
+    languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        console.log(`Language changed to: ${lang}`);
+    });
+
+    passwordInput.addEventListener('input', function() {
+        const password = this.value;
+        const strength = calculatePasswordStrength(password);
+        updatePasswordStrengthIndicator(strength);
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (validateForm()) {
+            console.log('Form submitted successfully');
+        }
+    });
+
+    countryCodeSelect.addEventListener('change', function() {
+        formatPhoneNumber();
+    });
+
+    phoneInput.addEventListener('input', function() {
+        formatPhoneNumber();
+    });
+
+    function calculatePasswordStrength(password) {
+        let strength = 0;
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+        if (password.match(/\d/)) strength++;
+        if (password.match(/[^a-zA-Z\d]/)) strength++;
+        return strength;
+    }
+
+    function updatePasswordStrengthIndicator(strength) {
+        const strengthText = ['Faible', 'Moyen', 'Fort', 'Très fort'];
+        const strengthColor = ['#ff4d4d', '#ffa64d', '#4da6ff', '#4dff4d'];
+        passwordStrengthText.textContent = strengthText[strength];
+        passwordStrengthMeterBar.style.width = `${(strength + 1) * 25}%`;
+        passwordStrengthMeterBar.style.backgroundColor = strengthColor[strength];
+    }
+
+    function validateForm() {
+        let isValid = true;
+        const email = document.getElementById('email').value;
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (!isValidEmail(email)) {
+            alert('Veuillez entrer une adresse e-mail valide.');
+            isValid = false;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Les mots de passe ne correspondent pas.');
+            isValid = false;
+        }
+
+        if (calculatePasswordStrength(password) < 2) {
+            alert('Veuillez choisir un mot de passe plus fort.');
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    function formatPhoneNumber() {
+        const countryCode = countryCodeSelect.value;
+        let phoneNumber = phoneInput.value.replace(/\D/g, '');
+
+        switch (countryCode) {
+            case '+1': // USA/Canada
+                if (phoneNumber.length > 10) phoneNumber = phoneNumber.slice(0, 10);
+                phoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                break;
+            case '+33': // France
+                if (phoneNumber.length > 9) phoneNumber = phoneNumber.slice(0, 9);
+                phoneNumber = phoneNumber.replace(/(\d{2})(?=\d)/g, '$1 ').trim();
+                break;
+            case '+44': // UK
+                if (phoneNumber.length > 10) phoneNumber = phoneNumber.slice(0, 10);
+                phoneNumber = phoneNumber.replace(/^(\d{3})(\d{3})(\d{4})$/, '$1 $2 $3');
+                break;
+            case '+49': // Germany
+                if (phoneNumber.length > 11) phoneNumber = phoneNumber.slice(0, 11);
+                phoneNumber = phoneNumber.replace(/(\d{3})(\d{4})(\d{4})/, '$1 $2 $3');
+                break;
+            case '+34': // Spain
+            case '+39': // Italy
+            case '+31': // Netherlands
+            case '+32': // Belgium
+            case '+41': // Switzerland
+            case '+351': // Portugal
+            case '+30': // Greece
+            case '+46': // Sweden
+            case '+47': // Norway
+            case '+45': // Denmark
+            case '+43': // Austria
+            case '+48': // Poland
+                if (phoneNumber.length > 9) phoneNumber = phoneNumber.slice(0, 9);
+                phoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
+                break;
+            case '+358': // Finland
+            case '+380': // Ukraine
+            case '+7': // Russia
+            case '+52': // Mexico
+            case '+55': // Brazil
+            case '+54': // Argentina
+            case '+57': // Colombia
+            case '+56': // Chile
+            case '+51': // Peru
+            case '+58': // Venezuela
+                if (phoneNumber.length > 10) phoneNumber = phoneNumber.slice(0, 10);
+                phoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '$1 $2 $3');
+                break;
+            case '+1787': // Puerto Rico
+            case '+1649': // Turks and Caicos Islands
+            case '+1284': // British Virgin Islands
+                if (phoneNumber.length > 10) phoneNumber = phoneNumber.slice(0, 10);
+                phoneNumber = phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+                break;
+            case '+691': // Micronesia
+            case '+692': // Marshall Islands
+            case '+680': // Palau
+            case '+507': // Panama
+            case '+503': // El Salvador
+            case '+670': // East Timor
+            case '+599': // Caribbean Netherlands
+                if (phoneNumber.length > 8) phoneNumber = phoneNumber.slice(0, 8);
+                phoneNumber = phoneNumber.replace(/(\d{4})(\d{4})/, '$1 $2');
+                break;
+            case '+593': // Ecuador
+                if (phoneNumber.length > 9) phoneNumber = phoneNumber.slice(0, 9);
+                phoneNumber = phoneNumber.replace(/(\d{2})(\d{3})(\d{4})/, '$1 $2 $3');
+                break;
+            default:
+                if (phoneNumber.length > 15) phoneNumber = phoneNumber.slice(0, 15);
+                phoneNumber = phoneNumber.replace(/(\d{3})(?=\d)/g, '$1 ').trim();
+                break;
+        }
+        phoneInput.value = phoneNumber;
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,633 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Prêts - LAZONA</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --background-color: #f9f9f9;
+        --text-color: #333;
+        --accent-color: #e74c3c;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0.5rem 2% 0.5rem 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-size: 2.8rem;
+        transition: all 0.3s ease;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-right: 2rem;
+        margin-left: -10rem;
+    }
+    
+    .logo:hover {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    
+    nav.main-nav {
+        flex-grow: 1;
+        margin-left: 2rem;
+    }
+
+    nav.main-nav ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    
+    nav.main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav.main-nav ul li a.nav-button {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    nav.main-nav ul li a.nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector {
+        margin-right: 20px;
+    }
+
+    #language-select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        background-color: transparent;
+        color: #fff;
+    }
+
+    #language-select option {
+        background-color: var(--primary-color);
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 10px;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .btn-secondary:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 6rem auto 2rem;
+        overflow: hidden;
+    }
+    
+    h1 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+    }
+    
+    .loan-types {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .loan-type {
+        flex-basis: calc(33.333% - 2rem);
+        margin-bottom: 2rem;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e0e0e0;
+    }
+    
+    .loan-type:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .loan-type i {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .loan-type:hover i {
+        transform: scale(1.1);
+    }
+    
+    .loan-type h2 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .loan-type ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    .loan-type ul li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .loan-type ul li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        margin-right: 0.5rem;
+    }
+    
+    .loan-type .btn {
+        margin-top: 1rem;
+    }
+    
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logo {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        
+        nav.main-nav {
+            order: 3;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        nav.main-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav.main-nav ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .auth-buttons {
+            margin-top: 1rem;
+        }
+        
+        .loan-type {
+            flex-basis: 100%;
+        }
+    }
+    .hero {
+        background: linear-gradient(rgba(52, 152, 219, 0.8), rgba(46, 204, 113, 0.8)), url('https://example.com/hero-bg.jpg') no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 150px 0;
+        margin-top: 60px;
+    }
+
+    .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .btn-hero {
+        background-color: var(--secondary-color);
+        color: white;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .testimonial-section {
+        background-color: #f1f8fe;
+        padding: 50px 0;
+    }
+
+    .testimonials {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+    }
+
+    .testimonial {
+        flex-basis: 48%;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .testimonial p {
+        font-style: italic;
+        margin-bottom: 10px;
+    }
+
+    .testimonial cite {
+        font-weight: bold;
+    }
+
+    .faq-section {
+        padding: 50px 0;
+    }
+
+    .faq-item {
+        margin-bottom: 20px;
+    }
+
+    .faq-item h3 {
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    .calculator-widget {
+        background-color: #f1f8fe;
+        padding: 50px 0;
+    }
+
+    #loan-calculator {
+        background-color: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    #loan-calculator input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+    }
+
+    #loan-calculator button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    #loan-calculator button:hover {
+        background-color: var(--secondary-color);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .testimonial, .faq-item, .loan-type {
+        animation: fadeIn 1s ease-out;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LAZONA</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="accueil.html" class="nav-button">Accueil</a></li>
+                    <li><a href="simulateur.html" class="nav-button">Simulateur</a></li>
+                    <li><a href="nos prêts.html" class="nav-button">Nos Prêts</a></li>
+                    <li><a href="inversticement.html" class="nav-button">Investissement</a></li>
+                    <li><a href="à propos.html" class="nav-button">À Propos</a></li>
+                    <li><a href="contacte.html" class="nav-button">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt">Português</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="connexion.html" class="btn btn-primary">Connexion</a>
+                <a href="inscription.html" class="btn btn-secondary">Inscription</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Trouvez le Prêt Parfait pour Votre Projet</h1>
+            <p>Chez LAZONA, nous vous accompagnons dans tous vos projets financiers.</p>
+            <a href="simulateur.html" class="btn btn-hero">Simuler mon prêt</a>
+        </div>
+    </div>
+
+    <div class="testimonial-section">
+        <div class="container">
+            <h2>Ce que disent nos clients</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"LAZONA m'a permis de réaliser mon rêve d'achat immobilier. Leur accompagnement a été précieux."</p>
+                    <cite>- Marie D., Paris</cite>
+                </div>
+                <div class="testimonial">
+                    <p>"Le prêt étudiant de LAZONA a financé mes études. Leurs conseillers sont à l'écoute et professionnels."</p>
+                    <cite>- Thomas L., Lyon</cite>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Nos Types de Prêts</h1>
+        <div class="loan-types">
+            <div class="loan-type">
+                <i class="fas fa-home"></i>
+                <h2>Prêt Immobilier</h2>
+                <ul>
+                    <li>Taux compétitifs à partir de 1.5%</li>
+                    <li>Durée de 5 à 30 ans</li>
+                    <li>Montant jusqu'à 1 000 000 €</li>
+                    <li>Assurance emprunteur incluse</li>
+                </ul>
+                <a href="" class="btn btn-primary">En savoir plus</a>
+            </div>
+            <div class="loan-type">
+                <i class="fas fa-car"></i>
+                <h2>Prêt Auto</h2>
+                <ul>
+                    <li>Taux à partir de 2.9%</li>
+                    <li>Durée de 1 à 7 ans</li>
+                    <li>Montant jusqu'à 75 000 €</li>
+                    <li>Véhicules neufs et d'occasion</li>
+                </ul>
+                <a href="/pret-auto" class="btn btn-primary">En savoir plus</a>
+            </div>
+            <div class="loan-type">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Prêt Étudiant</h2>
+                <ul>
+                    <li>Taux préférentiels dès 1%</li>
+                    <li>Durée jusqu'à 10 ans</li>
+                    <li>Montant jusqu'à 50 000 €</li>
+                    <li>Différé de remboursement possible</li>
+                </ul>
+                <a href="/pret-etudiant" class="btn btn-primary">En savoir plus</a>
+            </div>
+            <div class="loan-type">
+                <i class="fas fa-tools"></i>
+                <h2>Prêt Travaux</h2>
+                <ul>
+                    <li>Taux à partir de 2.5%</li>
+                    <li>Durée de 1 à 15 ans</li>
+                    <li>Montant jusqu'à 150 000 €</li>
+                    <li>Pour rénovation ou agrandissement</li>
+                </ul>
+                <a href="/pret-travaux" class="btn btn-primary">En savoir plus</a>
+            </div>
+            <div class="loan-type">
+                <i class="fas fa-briefcase"></i>
+                <h2>Prêt Professionnel</h2>
+                <ul>
+                    <li>Taux négociables selon projet</li>
+                    <li>Durée adaptée à votre activité</li>
+                    <li>Montant selon besoins</li>
+                    <li>Pour création ou développement</li>
+                </ul>
+                <a href="/pret-professionnel" class="btn btn-primary">En savoir plus</a>
+            </div>
+            <div class="loan-type">
+                <i class="fas fa-user"></i>
+                <h2>Prêt Personnel</h2>
+                <ul>
+                    <li>Taux à partir de 3.5%</li>
+                    <li>Durée de 6 mois à 7 ans</li>
+                    <li>Montant de 1 000 à 50 000 €</li>
+                    <li>Sans justificatif d'utilisation</li>
+                </ul>
+                <a href="/pret-personnel" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <div class="container">
+            <h2>Questions Fréquentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>Comment puis-je demander un prêt ?</h3>
+                    <p>Vous pouvez faire une demande en ligne via notre simulateur ou contacter directement l'un de nos conseillers.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Quels documents sont nécessaires pour une demande de prêt ?</h3>
+                    <p>Généralement, nous avons besoin de vos justificatifs d'identité, de revenus, et de domicile. La liste précise varie selon le type de prêt.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="calculator-widget">
+        <div class="container">
+            <h2>Calculez vos mensualités</h2>
+            <div id="loan-calculator">
+                <form id="loan-form">
+                    <div>
+                        <label for="loan-amount">Montant du prêt (€):</label>
+                        <input type="number" id="loan-amount" required>
+                    </div>
+                    <div>
+                        <label for="loan-term">Durée (années):</label>
+                        <input type="number" id="loan-term" required>
+                    </div>
+                    <div>
+                        <label for="interest-rate">Taux d'intérêt (%):</label>
+                        <input type="number" id="interest-rate" step="0.1" required>
+                    </div>
+                    <button type="submit">Calculer</button>
+                </form>
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="mention légal.html">Mentions légales</a></li>
+                    <li><a href="Politique de Confidentialité.html">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="carrières.html" data-translate="careers">Carrières</a></li>
+                    <li><a href="Blog.html" data-translate="blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Nos services</h3>
+                <ul>
+                    <li><a href="simulateur.html">Simulateur de prêt</a></li>
+                    <li><a href="nos prêts.html">Types de prêts</a></li>
+                    <li><a href="inversticement.html">Opportunités d'investissement</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@lazona.fr</li>
+                    <li>Téléphone: +33 1 23 45 67 89</li>
+                    <li>Adresse: 123 Rue de la Finance, 75008 Paris</li>
+                </ul>
+            </div>
+        </div>
+        <p>© 2016 LAZONA. Tous droits réservés.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const languageSelect = document.getElementById('language-select');
+    
+    languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        console.log(`Language changed to: ${lang}`);
+    });
+
+    function initLoanCalculator() {
+        const calculatorContainer = document.getElementById('loan-calculator');
+        document.getElementById('loan-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('loan-amount').value);
+            const term = parseFloat(document.getElementById('loan-term').value);
+            const rate = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
+            const payments = term * 12;
+        
+            const x = Math.pow(1 + rate, payments);
+            const monthly = (amount * x * rate) / (x - 1);
+
+            if (isFinite(monthly)) {
+                document.getElementById('result').innerHTML = `Mensualité estimée: ${monthly.toFixed(2)} €`;
+            } else {
+                document.getElementById('result').innerHTML = "Veuillez vérifier vos entrées";
+            }
+        });
+    }
+
+    initLoanCalculator();
+});
+</script>
+
+</body>
+</html>
