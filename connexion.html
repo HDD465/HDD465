@@ -1,0 +1,431 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion - LAZONA</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --background-color: #f9f9f9;
+        --text-color: #333;
+        --accent-color: #e74c3c;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0.5rem 2% 0.5rem 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-size: 2.8rem;
+        transition: all 0.3s ease;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-right: 2rem;
+        margin-left: -10rem;
+    }
+    
+    .logo:hover {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    
+    nav.main-nav {
+        flex-grow: 1;
+        margin-left: 2rem;
+    }
+
+    nav.main-nav ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    
+    nav.main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav.main-nav ul li a.nav-button {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    nav.main-nav ul li a.nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector {
+        margin-right: 20px;
+    }
+
+    #language-select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        background-color: transparent;
+        color: #fff;
+    }
+
+    #language-select option {
+        background-color: var(--primary-color);
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 10px;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .btn-secondary:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 6rem auto 2rem;
+        padding: 2rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
+    h1 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+    
+    .login-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .login-btn:hover {
+        background-color: #2980b9;
+    }
+    
+    .forgot-password {
+        text-align: right;
+        margin-top: 1rem;
+    }
+    
+    .forgot-password a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .forgot-password a:hover {
+        text-decoration: underline;
+    }
+    
+    .social-login {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .social-login h3 {
+        color: var(--text-color);
+        margin-bottom: 1rem;
+    }
+    
+    .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #f5f5f5;
+        color: var(--text-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .social-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .social-btn i {
+        font-size: 1.5rem;
+    }
+    
+    .create-account {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    
+    .create-account p {
+        color: var(--text-color);
+    }
+    
+    .create-account a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .create-account a:hover {
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logo {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        
+        nav.main-nav {
+            order: 3;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        nav.main-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav.main-nav ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .auth-buttons {
+            margin-top: 1rem;
+        }
+        
+        .container {
+            width: 95%;
+            padding: 1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LAZONA</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Connexion</h1>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Se connecter</button>
+            <div class="forgot-password">
+                <a href="/mot-de-passe-oublie">Mot de passe oublié?</a>
+            </div>
+        </form>
+        
+        <div class="social-login">
+            <h3>Ou connectez-vous avec</h3>
+            <div class="social-buttons">
+                <a href="#" class="social-btn" title="Se connecter avec Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-btn" title="Se connecter avec Google">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="social-btn" title="Se connecter avec Apple">
+                    <i class="fab fa-apple"></i>
+                </a>
+            </div>
+        </div>
+        
+        <div class="create-account">
+            <p>Vous n'avez pas de compte? <a href="inscription.html">Créer un compte</a></p>
+        </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const languageSelect = document.getElementById('language-select');
+    
+    languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        console.log(`Language changed to: ${lang}`);
+        // Here you would typically implement the logic to change the page language
+    });
+
+    // Form submission handling
+    const loginForm = document.querySelector('.login-form');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Here you would typically send the login request to your server
+        console.log(`Login attempt with email: ${email}`);
+        // For demonstration purposes, we'll just show an alert
+        alert('Tentative de connexion enregistrée. Dans une application réelle, nous enverrions ces informations à un serveur pour authentification.');
+    });
+
+    // Social login buttons
+    const socialButtons = document.querySelectorAll('.social-btn');
+    socialButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const network = e.currentTarget.title.split(' ').pop();
+            console.log(`Tentative de connexion via ${network}`);
+            alert(`Tentative de connexion via ${network}. Dans une application réelle, nous vous redirigerions vers la page d'authentification de ${network}.`);
+        });
+    });
+});
+</script>
+
+</body>
+</html>

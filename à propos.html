@@ -1,0 +1,564 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Propos - LAZONA</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<style>
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --background-color: #f9f9f9;
+        --text-color: #333;
+        --accent-color: #e74c3c;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0.5rem 2% 0.5rem 10%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .logo {
+        font-size: 2.8rem;
+        transition: all 0.3s ease;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        margin-right: 2rem;
+        margin-left: -10rem;
+    }
+    
+    .logo:hover {
+        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+    
+    nav.main-nav {
+        flex-grow: 1;
+        margin-left: 2rem;
+    }
+
+    nav.main-nav ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 0;
+    }
+    
+    nav.main-nav ul li {
+        margin: 0 10px;
+    }
+    
+    nav.main-nav ul li a.nav-button {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    nav.main-nav ul li a.nav-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .auth-buttons {
+        display: flex;
+        align-items: center;
+    }
+
+    .language-selector {
+        margin-right: 20px;
+    }
+
+    #language-select {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        background-color: transparent;
+        color: #fff;
+    }
+
+    #language-select option {
+        background-color: var(--primary-color);
+    }
+    
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+        margin-left: 10px;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    .btn-primary:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .btn-secondary:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+    
+    .container {
+        width: 80%;
+        max-width: 1200px;
+        margin: 6rem auto 2rem;
+        padding: 2rem;
+        background-color: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+    
+    h1, h2 {
+        color: var(--primary-color);
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .about-section {
+        margin-bottom: 3rem;
+    }
+    
+    .about-section h2 {
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .team-members {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 2rem;
+    }
+    
+    .team-member {
+        text-align: center;
+        margin-bottom: 2rem;
+        width: 200px;
+    }
+    
+    .team-member img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+        border: 3px solid var(--primary-color);
+    }
+    
+    .values {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .value {
+        flex-basis: calc(33% - 1rem);
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .value i {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+    }
+    
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 2rem;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .footer-section a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .header-content {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .logo {
+            margin-left: 0;
+            margin-bottom: 1rem;
+        }
+        
+        nav.main-nav {
+            order: 3;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        nav.main-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        nav.main-nav ul li {
+            margin: 0.5rem 0;
+        }
+        
+        .auth-buttons {
+            margin-top: 1rem;
+        }
+        
+        .container {
+            width: 95%;
+            padding: 1rem;
+        }
+        
+        .value {
+            flex-basis: 100%;
+        }
+    }
+    
+    .timeline {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px 0;
+    }
+
+    .timeline::after {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background-color: var(--secondary-color);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+    }
+
+    .timeline-item {
+        padding: 10px 40px;
+        position: relative;
+        width: 50%;
+    }
+
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: -10px;
+        background-color: var(--primary-color);
+        border: 4px solid var(--secondary-color);
+        top: 15px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd) {
+        left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 50%;
+    }
+
+    .timeline-item:nth-child(even)::after {
+        left: -10px;
+    }
+
+    .timeline-content {
+        padding: 20px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .about-section, .team-member, .value, .timeline-item {
+        animation: fadeInUp 0.8s ease-out forwards;
+        opacity: 0;
+    }
+
+    .about-section:nth-child(1) { animation-delay: 0.2s; }
+    .about-section:nth-child(2) { animation-delay: 0.4s; }
+    .about-section:nth-child(3) { animation-delay: 0.6s; }
+    .team-member:nth-child(1) { animation-delay: 0.8s; }
+    .team-member:nth-child(2) { animation-delay: 1s; }
+    .team-member:nth-child(3) { animation-delay: 1.2s; }
+    .value:nth-child(1) { animation-delay: 1.4s; }
+    .value:nth-child(2) { animation-delay: 1.6s; }
+    .value:nth-child(3) { animation-delay: 1.8s; }
+</style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">LAZONA</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/" class="nav-button">Accueil</a></li>
+                    <li><a href="simulateur.html" class="nav-button">Simulateur</a></li>
+                    <li><a href="nos prêts.html" class="nav-button">Nos Prêts</a></li>
+                    <li><a href="inversticement.html" class="nav-button">Investissement</a></li>
+                    <li><a href="à propos.html" class="nav-button">À Propos</a></li>
+                    <li><a href="contacte.html" class="nav-button">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt">Português</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </div>
+            <div class="auth-buttons">
+                <a href="connexion.html" class="btn btn-primary">Connexion</a>
+                <a href="inscription.html" class="btn btn-secondary">Inscription</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>À Propos de LAZONA</h1>
+        
+        <div class="about-section">
+            <h2>Notre Histoire</h2>
+            <p>Fondée en 2010, LAZONA est née de la vision de trois entrepreneurs passionnés par la finance et l'innovation. Notre mission est de démocratiser l'accès au crédit en proposant des solutions de prêt transparentes, équitables et adaptées aux besoins de chacun.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2010</h3>
+                        <p>Création de LAZONA par nos trois co-fondateurs</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2013</h3>
+                        <p>Lancement de notre première plateforme de prêt en ligne</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2016</h3>
+                        <p>LAZONA devient un acteur majeur du marché du prêt en ligne en Europe</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2019</h3>
+                        <p>Introduction de l'IA dans notre processus d'évaluation des demandes de prêt</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>2023</h3>
+                        <p>LAZONA étend ses services à 10 pays européens et lance une application mobile innovante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2>Notre Équipe</h2>
+            <p>Chez LAZONA, notre force réside dans la diversité et l'expertise de notre équipe. Nos collaborateurs passionnés travaillent chaque jour pour offrir le meilleur service à nos clients.</p>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://example.com/marie-dupont.jpg" alt="Marie Dupont, CEO">
+                    <h3>Marie Dupont</h3>
+                    <p>CEO & Co-fondatrice</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://example.com/jean-martin.jpg" alt="Jean Martin, CTO">
+                    <h3>Jean Martin</h3>
+                    <p>CTO & Co-fondateur</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://example.com/sophie-laurent.jpg" alt="Sophie Laurent, CFO">
+                    <h3>Sophie Laurent</h3>
+                    <p>CFO & Co-fondatrice</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2>Nos Valeurs</h2>
+            <p>Nos valeurs sont au cœur de tout ce que nous faisons. Elles guident nos décisions et façonnent notre culture d'entreprise.</p>
+            <div class="values">
+                <div class="value">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Transparence</h3>
+                    <p>Nous croyons en une communication ouverte et honnête avec nos clients et partenaires.</p>
+                </div>
+                <div class="value">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Confiance</h3>
+                    <p>Nous construisons des relations durables basées sur la confiance mutuelle.</p>
+                </div>
+                <div class="value">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>Nous cherchons constamment à innover pour améliorer nos services et l'expérience client.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2>Notre Engagement</h2>
+            <p>Chez LAZONA, nous nous engageons à :</p>
+            <ul>
+                <li>Offrir des solutions de prêt adaptées aux besoins de chaque client</li>
+                <li>Maintenir les plus hauts standards de sécurité et de confidentialité</li>
+                <li>Promouvoir l'éducation financière pour aider nos clients à prendre des décisions éclairées</li>
+                <li>Contribuer positivement à la société à travers nos initiatives de responsabilité sociale</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="mention légal.html">Mentions légales</a></li>
+                    <li><a href="Politique de Confidentialité.html">Politique de confidentialité</a></li>
+                    <li><a href="FAQ.html">FAQ</a></li>
+                    <li><a href="carrières.html" data-translate="careers">Carrières</a></li>
+                    <li><a href="Blog.html" data-translate="blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Nos services</h3>
+                <ul>
+                    <li><a href="simulateur.html">Simulateur de prêt</a></li>
+                    <li><a href="nos prêts.html">Types de prêts</a></li>
+                    <li><a href="inversticement.html">Opportunités d'investissement</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Email: contact@lazona.fr</li>
+                    <li>Téléphone: +33 1 23 45 67 89</li>
+                    <li>Adresse: 123 Rue de la Finance, 75008 Paris</li>
+                </ul>
+            </div>
+        </div>
+        <p>© 2016 LAZONA. Tous droits réservés.</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const languageSelect = document.getElementById('language-select');
+    
+    languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        console.log(`Language changed to: ${lang}`);
+        // Here you would typically implement the logic to change the page language
+    });
+
+    // Intersection Observer for animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    }, {threshold: 0.1});
+
+    document.querySelectorAll('.about-section, .team-member, .value, .timeline-item').forEach(el => {
+        el.style.animationPlayState = 'paused';
+        observer.observe(el);
+    });
+});
+</script>
+
+</body>
+</html>
